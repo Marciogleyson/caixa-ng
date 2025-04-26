@@ -1,0 +1,23 @@
+<div>
+    <label for="campo-nome">Nome</label>
+    <input type="text" name="campo-nome" id="campo-nome" placeholder="Qualquer Coisa" [(ngModel)]="nome">
+
+</div>
+
+<div>
+    <label for="campo-valor">Valor</label>
+    <input type="text" name="campo-valor" id="campo-valor" [(ngModel)]="valor">
+</div>
+
+<button (click)="salvarReceita()" >Salvar</button>
+@if(nome != ""){
+    <p>Texto Digitado: {{nome}}</p>
+
+
+    <ul>
+        <li>1 vez: {{ valor * 1}}</li>
+        <li>1 vez: {{ valor * 2}}</li>
+         <li>1 vez: {{ valor * 3}}</li>
+        <li>1 vez: {{ valor * 4}}</li>
+    </ul>
+}    
