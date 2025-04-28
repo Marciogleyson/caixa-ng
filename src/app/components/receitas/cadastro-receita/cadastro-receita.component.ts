@@ -13,7 +13,7 @@ export class CadastroReceitaComponent {
 
   nome: string = "";
   valor: number = 0;
-  receita: Array <string> = []
+  receitas: Array<string> = []
 
   salvarReceita(){
     debugger;
