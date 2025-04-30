@@ -3,6 +3,15 @@
   
     <label>Nome:</label>
     <input type="text" [(ngModel)]="nome" placeholder="Digite o nome do produto" />
+
+    <select name="opcao" id="opcao">
+        <option value="">Escolha a opção</option>
+        <option value="Arroz">Arroz</option>
+        <option value="Feijão">Feijão</option>
+        <option value="macarrao">Macarrão</option>
+        <option value="Carne">Carne</option>
+        <option value="Frango">Frango</option>
+    </select>
   
     <button (click)="salvarProduto()">
       {{ idParaEditar !== undefined ? 'Salvar Edição' : 'Cadastrar' }}
