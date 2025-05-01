@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Produto } from '../../../models/produto';
 
 @Component({
   selector: 'app-cadastro-produto',
@@ -13,16 +14,22 @@ export class CadastroProdutoComponent {
   proximoId: number = 1;
   idParaEditar?: number;
   nome: string = "";
+  categoria: string = "";
   produtos: Produto[] = [];
+  mensagemErro: string = '';
 
   salvarProduto() {
-    if (this.nome.trim().length < 3) {
-      alert("Nome deve conter no mínimo 3 caracteres");
+    this.mensagemErro = ''; 
+
+    const nomeValidationResult = this.validarNome(this.nome);
+    if (nomeValidationResult) {
+      this.mensagemErro = nomeValidationResult;
       return;
     }
 
-    if (this.nome.length > 30) {
-      alert("Nome deve conter no máximo 30 caracteres");
+    const categoriaValidationResult = this.validarCategoria(this.categoria);
+    if (categoriaValidationResult) {
+      this.mensagemErro = categoriaValidationResult;
       return;
     }
 
@@ -32,25 +39,46 @@ export class CadastroProdutoComponent {
       this.editarProduto();
     }
 
-    this.nome = "";
-    this.idParaEditar = undefined;
+    this.limparCampos();
   }
 
-  cadastrarProduto() {
-    const novoProduto = new Produto(this.proximoId++, this.nome);
+  private validarNome(nome: string): string | null {
+    if (nome.trim().length < 3) {
+      return 'Nome deve conter no mínimo 3 caracteres';
+    }
+
+    if (nome.length > 30) {
+      return 'Nome deve conter no máximo 30 caracteres';
+    }
+
+    return null;
+  }
+
+  private validarCategoria(categoria: string): string | null {
+    if (!categoria) {
+      return 'Categoria é obrigatória';
+    }
+    return null;
+  }
+
+  private cadastrarProduto() {
+    const novoProduto = new Produto(this.proximoId++, this.nome, this.categoria);
     this.produtos.push(novoProduto);
   }
 
-  editarProduto() {
+  private editarProduto() {
     const indice = this.produtos.findIndex(p => p.id === this.idParaEditar);
     if (indice !== -1) {
       this.produtos[indice].nome = this.nome;
+      this.produtos[indice].categoria = this.categoria;
     }
   }
 
   editar(produto: Produto) {
     this.idParaEditar = produto.id;
     this.nome = produto.nome;
+    this.categoria = produto.categoria;
+    this.mensagemErro = ''; 
   }
 
   apagar(produto: Produto) {
@@ -59,11 +87,10 @@ export class CadastroProdutoComponent {
       this.produtos.splice(indice, 1);
     }
   }
-}
 
-class Produto {
-  constructor(
-    public id: number,
-    public nome: string
-  ) {}
+  private limparCampos() {
+    this.nome = '';
+    this.categoria = '';
+    this.idParaEditar = undefined;
+  }
 }

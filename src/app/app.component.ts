@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { CadastroReceitaComponent } from './components/receitas/cadastro-receita/cadastro-receita.component';
 import { CadastroProdutoComponent } from './components/produtos/cadastro-produto/cadastro-produto.component';
 
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CadastroReceitaComponent, CadastroProdutoComponent],
@@ -12,3 +13,4 @@ import { CadastroProdutoComponent } from './components/produtos/cadastro-produto
 export class AppComponent {
   title = 'caixa-ng';
 }
+

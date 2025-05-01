@@ -1,47 +1,49 @@
 <div class="formulario">
     <h2>{{ idParaEditar !== undefined ? 'Editar Produto' : 'Cadastrar Produto' }}</h2>
-  
+
     <label>Nome:</label>
     <input type="text" [(ngModel)]="nome" placeholder="Digite o nome do produto" />
 
-    <select name="opcao" id="opcao">
+    <!-- Categoria -->
+    <label for="categoria">Escolha uma categoria:</label>
+    <select name="categoria" id="categoria" [(ngModel)]="categoria">
         <option value="">Escolha a opção</option>
         <option value="Arroz">Arroz</option>
         <option value="Feijão">Feijão</option>
-        <option value="macarrao">Macarrão</option>
+        <option value="Macarrão">Macarrão</option>
         <option value="Carne">Carne</option>
         <option value="Frango">Frango</option>
     </select>
-  
+
+
+    <!-- Error Message -->
+    <div *ngIf="mensagemErro" class="error">{{ mensagemErro }}</div>
+
     <button (click)="salvarProduto()">
-      {{ idParaEditar !== undefined ? 'Salvar Edição' : 'Cadastrar' }}
+        {{ idParaEditar !== undefined ? 'Salvar Edição' : 'Cadastrar' }}
     </button>
-  </div>
-  
-  <hr />
-  
-  <h3>Lista de Produtos</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-       
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of produtos">
-        <td>{{ p.id }}</td>
-        <td>{{ p.nome }}</td>
-        <td>
-          <button (click)="editar(p)">Editar</button>
-          <button (click)="apagar(p)">Apagar</button>
-        </td>
-      </tr>
-    </tbody>
-    
-       
-       
-   
-  </table>
-  
+
+    <hr />
+
+    <h3>Lista de Produtos</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of produtos">
+                <td>{{ p.id }}</td>
+                <td>{{ p.nome }}</td>
+                <td>{{ p.categoria }}</td>
+                <td>
+                    <button (click)="editar(p)">Editar</button>
+                    <button (click)="apagar(p)">Apagar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
