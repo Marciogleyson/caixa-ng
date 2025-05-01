@@ -1,0 +1,80 @@
+
+<div class="container">
+    <h1>Lista de Produtos</h1>
+
+    <div class="formulario-tabela">
+        <div class="formulario">
+            <div>
+                <label for="campo-nome">Nome</label>
+                <input type="text" id="campo-nome" placeholder="Digite um texto" [(ngModel)]="nome">
+
+            </div>
+            <div class="formulario-select">
+                <label for="categoria">Categoria</label>
+                <select class="formulario-tabela" name="categoria" id="categoria" [(ngModel)]="categoria" >
+                    <option value="arroz">Arroz</option>
+                    <option value="feijao">Feijão</option>
+                    <option value="carnes">Carnes</option>
+                    <option value="pao-queijo">Paõ-Queijo</option>
+                    <option value="suco">Sucos</option>
+                    <option value="torta">Tortas</option>
+                    <option value="bebidas">Bebidas</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="formulario-quantidade">
+            <label for="quantidade">Quantidade</label>
+            <input type="number" name="quantidade" id="quantidade" [(ngModel)]="quantidade">
+        </div>
+        <div class="formulario-preco">
+            <label for="preco">Preço Unitário</label>
+            <input type="number" name="perco" id="preco" [(ngModel)]="preco">
+        </div>
+        <div class="formulario-vencimento">
+            <label>Produto Vencido?</label>
+            <input type="radio" name="vencido" [(ngModel)]="vencido" value="true"> Sim
+            <input type="radio" name="vencido" [(ngModel)]="vencido" value="false"> Não
+        </div>
+
+        <div class="formulario-estoque">
+            <label for="estoque">Produto em Estoque ?</label>
+            <input type="checkbox" name="estoque" id="estoque" [(ngModel)]="estoque">
+        </div>
+
+        <button (click)="salvarProduto()">Salvar</button>
+    </div>
+    <div class="tabela">
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Quantidade</th>
+                    <th>Preço Unitário</th>
+                    <th>Vencido</th>
+                    <th>Estoque</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(produto of produtos; track produto){
+                <tr>
+                    <td>{{produto.id}}</td>
+                    <td>{{produto.nome}}</td>
+                    <td>{{produto.categoria}}</td>
+                    <td>{{produto.quantidade}}</td>
+                    <td>{{produto.preco}}</td>
+                    <td>{{ produto.vencido}}</td>
+                    <td>{{produto.estoque}}</td>
+                    <td>
+                        <button (click)="editar(produto)">Editar</button>
+                        <button (click)="apagar(produto)">Apagar</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

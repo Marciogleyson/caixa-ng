@@ -1,0 +1,14 @@
+#Execicio
+
+#CRUD de produto
+
+Deve conter os seguintes campos (id, nome)
+
+- Criar o componente componentes\produtos\cadastro-produto
+
+cd .\src\app\
+ng generate component components\produto\cadastro-produto
+
+- Criar o modelo models/produtos.ts
+Colocar os campos (utilizar como modelo receita.ts)
+- Criar o html e o ts

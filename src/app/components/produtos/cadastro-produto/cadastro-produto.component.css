@@ -1,0 +1,126 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #32d624;
+    margin-bottom: 30px;
+}
+
+.formulario-tabela {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    background: #ee8383;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formulario > div,
+.formulario-quantidade,
+.formulario-preco {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #ccc;
+    font-weight: bolder;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    margin: 4px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #145ea8;
+}
+
+.tabela table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+.tabela th,
+.tabela td {
+    padding: 12px 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.tabela th {
+    background-color: #1976d2;
+    color: white;
+}
+
+.tabela td {
+    background-color: #87dd24;
+}
+
+@media (max-width: 768px) {
+    .formulario-tabela {
+        flex-direction: column;
+    }
+
+    .tabela table,
+    .tabela thead,
+    .tabela tbody,
+    .tabela th,
+    .tabela td,
+    .tabela tr {
+        display: block;
+    }
+
+    .tabela tr {
+        margin-bottom: 15px;
+    }
+
+    .tabela td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .tabela td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: left;
+    }
+}
