@@ -28,6 +28,8 @@ estoque: number = 0;
 
 produtos: Array<Produto> = [];
 
+descricao: string = "";
+
 salvarProduto(){
   if(this.nome.length < 3){
     alert(" Nome deve conter no mínimo 3 caracteres")
@@ -60,13 +62,14 @@ editarProduto(){
   this.produtos[indiceProduto].preco = this.preco;
   this.produtos[indiceProduto].vencido = this.vencido;
   this.produtos[indiceProduto].estoque = this.estoque;
+  this.produtos[indiceProduto].descricao = this.descricao;
 
   this.idParaEditar = undefined;
 }
 
 cadastrarProduto(){
   this.proximoId++;
-  let produto = new Produto(this.proximoId, this.nome, this.categoria, this.quantidade, this.preco, this.vencido, this.estoque,);
+  let produto = new Produto(this.proximoId, this.nome, this.categoria, this.quantidade, this.preco, this.vencido, this.estoque, this.descricao);
   this.produtos.push(produto);
 }
 apagar(produto: Produto){
@@ -82,6 +85,7 @@ editar(produto: Produto){
   this.preco = produto.preco;
   this.vencido = produto.vencido;
   this.estoque = produto.estoque;
+  this.descricao = produto.descricao;
 }
 
 }

@@ -41,6 +41,9 @@
             <label for="estoque">Produto em Estoque ?</label>
             <input type="checkbox" name="estoque" id="estoque" [(ngModel)]="estoque">
         </div>
+        <div>
+            <textarea name="descricao" id="descricao" cols="30" rows="10" [(ngModel)]="descricao">Descrição</textarea>
+        </div>
 
         <button (click)="salvarProduto()">Salvar</button>
     </div>
@@ -55,6 +58,7 @@
                     <th>Preço Unitário</th>
                     <th>Vencido</th>
                     <th>Estoque</th>
+                    <th>Descrição</th>
                     <th>Opções</th>
                 </tr>
             </thead>
@@ -68,6 +72,8 @@
                     <td>{{produto.preco}}</td>
                     <td>{{ produto.vencido}}</td>
                     <td>{{produto.estoque}}</td>
+                    <td>{{produto.descricao}}</td>
+                   
                     <td>
                         <button (click)="editar(produto)">Editar</button>
                         <button (click)="apagar(produto)">Apagar</button>
