@@ -89,7 +89,7 @@ button:hover {
     background-color: #87dd24;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 450px) {
     .formulario-tabela {
         flex-direction: column;
     }
@@ -124,3 +124,5 @@ button:hover {
         text-align: left;
     }
 }
+
+
