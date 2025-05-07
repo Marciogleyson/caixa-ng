@@ -1,28 +1,39 @@
 
 
-<app-cliente-cadastro 
-    (salvarEvento)="registrarClienteSalvo()"
-    [cliente] = "cliente"></app-cliente-cadastro>
+<body>
+    <main>
+        <app-cliente-cadastro
+            (salvarEvento)="registrarClienteSalvo()"
+            [cliente] = "cliente"></app-cliente-cadastro>
 
-<table class="table table-success table-striped">
-    <thead>
-        <tr>
-            <th>Código</th>
-            <th>Nome</th>
-            <th>Ação</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for(cliente of clientes; track cliente){
-            <tr>
-                <td>{{cliente.id}}</td>
-                <td>{{cliente.nome}}</td>
-                <td>
-                    <button (click)="preencherCamposParaEditar(cliente)">Editar</button>
-                    <button (click)="apagar(cliente)">Apagar</button>
-                </td>
-            </tr>
+        <div class="busca">
+            <label for="campo-busca">Busca</label>
+            <input type="search" name="campo-busca" id="campo-busca" [(ngModel)]="busca" (keyup)="listaClientesFiltrando()">
+        </div>    
         
-        }
-    </tbody>
-</table>
+        <table class="table table-success table-striped">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(cliente of clientesTable; track cliente){
+                    <tr>
+                        <td>{{cliente.id}}</td>
+                        <td>{{cliente.nome}}</td>
+                        <td>{{cliente.cpf}}</td>
+                        <td>
+                            <button (click)="preencherCamposParaEditar(cliente)">Editar</button>
+                            <button (click)="apagar(cliente)">Apagar</button>
+                        </td>
+                    </tr>
+        
+                }
+            </tbody>
+        </table>
+    </main>
+</body>

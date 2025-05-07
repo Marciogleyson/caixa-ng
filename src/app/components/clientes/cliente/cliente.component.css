@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    background-color: red;
+    
+    
+}
+
+main {
+   
+    padding: 10px;
+    margin: auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.busca {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
